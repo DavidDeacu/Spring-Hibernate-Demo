@@ -92,7 +92,6 @@ public class Student {
 	}
 	
 	
-
 	public Student(String firstName, String lastName, String city) {
 		this.firstName = firstName;
 		this.lastName = lastName;

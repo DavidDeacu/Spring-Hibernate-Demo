@@ -24,6 +24,7 @@ public class SearchService {
 	
 public static List<Student> searchStudents(String firstName, String lastName, String city) {
 		
+		//Final list that will contain matched students based on criteria
 		List<Student> matchedStudents;
 		
 		factory = new Configuration()
@@ -38,13 +39,12 @@ public static List<Student> searchStudents(String firstName, String lastName, St
 			session = factory.getCurrentSession();
 			session.beginTransaction();
 
+			//Get Criteria Builder
 			CriteriaBuilder builder = session.getCriteriaBuilder();
+			
+			//Create Criteria
 			CriteriaQuery<Student> criteria = builder.createQuery(Student.class);
 			Root<Student> studentRoot = criteria.from(Student.class);
-			
-			Predicate[] predicates = new Predicate[2];
-			predicates[0] = builder.like(studentRoot.get("lastName"), lastName);
-			predicates[1] = builder.equal(studentRoot.get("city"), city);
 			
 			Predicate isFirstNameNull = builder.isNotNull(studentRoot.get("firstName"));
 			Predicate equalToFirstName = builder.like(studentRoot.get("firstName"), firstName);
@@ -59,29 +59,9 @@ public static List<Student> searchStudents(String firstName, String lastName, St
 						builder.equal(studentRoot.get("city"), city)
 					);
 			
+			//Use criteria to query with session to fetch all students
 			Query query = session.createQuery(criteria);
-			
-			
 			matchedStudents = query.getResultList();
-
-			
-//			if(firstName != null)
-//				criteria.add(Restrictions.eq("firstName", firstName));
-//			if(lastName != null)
-//				criteria.add(Restrictions.eq("lastName", lastName));
-//			if(city != null)
-//				criteria.add(Restrictions.eq("city", city));
-//			
-//			matchedStudents = criteria.list();
-			
-//			
-//			
-//			for (Iterator iterator = matchedStudents.iterator(); iterator.hasNext();){
-//	            Student student = (Student) iterator.next(); 
-//	            System.out.print("First Name: " + student.getFirstName()); 
-//	            System.out.print("  Last Name: " + student.getLastName()); 
-//	            System.out.println("  Salary: " + student.getCity()); 
-//	         }
 			
 			session.getTransaction().commit();
 			
@@ -89,7 +69,6 @@ public static List<Student> searchStudents(String firstName, String lastName, St
 			factory.close();
 		}
 		
-		System.out.println("THE MATCHED STUDENT IS: " + matchedStudents);
 		return matchedStudents;
 	}
 }

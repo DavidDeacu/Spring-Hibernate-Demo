@@ -15,6 +15,7 @@ public class SearchController {
 	@RequestMapping("/processSearch")
 	public String processSearch(@ModelAttribute("student") Student student, @ModelAttribute("user") User user, Model model) {
 		
+		//Create a Student model returned based on a SQL Query with criteria
 		model.addAttribute("matchedStudent", SearchService.searchStudents(student.getFirstName(), student.getLastName(), student.getCity()));
 		
 		return "search-results";
