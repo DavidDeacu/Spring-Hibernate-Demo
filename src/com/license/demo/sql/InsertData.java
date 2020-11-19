@@ -36,27 +36,42 @@ public class InsertData {
 //			User tempUser2 = new User("Vladut", "123");
 //			
 //			tempStudent2.setUser(tempUser2);
+//			
+//			Student tempStudent3 = new Student("David", "Parks", "Bucharest");
+//			User tempUser3 = new User("DavidParks", "123");
+//			
+//			tempStudent3.setUser(tempUser3);
+//			
+//			Student tempStudent4 = new Student("Malak", "Boga", "Constanta");
+//			User tempUser4 = new User("Malak", "123");
+//			
+//			tempStudent4.setUser(tempUser4);
+//			
+//			Student tempStudent5 = new Student("Emma", "Parks", "Bucharest");
+//			User tempUser5 = new User("Emma", "123");
+//			
+//			tempStudent5.setUser(tempUser5);
 			
-			Student tempStudent3 = new Student("David", "Parks", "Bucharest");
-			User tempUser3 = new User("DavidParks", "123");
+			Student tempStudent7 = new Student("David", "Brooks", "Constanta");
+			User tempUser7 = new User("Dvd", "123");
 			
-			tempStudent3.setUser(tempUser3);
+			tempStudent7.setUser(tempUser7);
 			
-			Student tempStudent4 = new Student("Malak", "Boga", "Constanta");
-			User tempUser4 = new User("Malak", "123");
+			Student tempStudent8 = new Student("Stefi", "Brooks", "Constanta");
+			User tempUser8 = new User("StefiStefi", "123");
 			
-			tempStudent4.setUser(tempUser4);
+			tempStudent8.setUser(tempUser8);
 			
-			Student tempStudent5 = new Student("Emma", "Parks", "Bucharest");
-			User tempUser5 = new User("Emma", "123");
+			Student tempStudent9 = new Student("Cristi", "Deacu", "Constanta");
+			User tempUser9 = new User("Cristi", "123");
 			
-			tempStudent5.setUser(tempUser5);
+			tempStudent9.setUser(tempUser9);
 			
 			session.beginTransaction();
 			
-			session.save(tempStudent3);
-			session.save(tempStudent4);
-			session.save(tempStudent5);
+			session.save(tempStudent7);
+			session.save(tempStudent8);
+			session.save(tempStudent9);
 			
 			session.getTransaction().commit();
 			
