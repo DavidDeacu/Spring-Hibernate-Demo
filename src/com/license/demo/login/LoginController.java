@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.license.demo.User;
+import com.license.demo.entity.Student;
+import com.license.demo.entity.User;
 
 @Controller
 @RequestMapping("/login")
@@ -26,6 +27,7 @@ public class LoginController {
 	
 	@RequestMapping("/processLogin")
 	public String processLoginForm(@Valid @ModelAttribute("user") User user, BindingResult theBindingResult, Model model) {
+		model.addAttribute("student", new Student());
 		
 		if(LoginService.validateLogin(user.getUsername(), user.getPassword()) && !theBindingResult.hasErrors())
 			return "catalog";

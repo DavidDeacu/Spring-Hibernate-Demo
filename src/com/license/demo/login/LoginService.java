@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.license.demo.User;
+import com.license.demo.entity.User;
 
 public class LoginService {
 	
